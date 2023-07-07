@@ -1,0 +1,22 @@
+{
+  "name": "do-things",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianjamieson/do-things.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianjamieson/do-things/issues"
+  },
+  "homepage": "https://github.com/ianjamieson/do-things#readme",
+  "dependencies": {
+    "cypress": "^12.17.0"
+  }
+}
