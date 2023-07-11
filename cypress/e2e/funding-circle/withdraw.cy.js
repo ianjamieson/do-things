@@ -1,5 +1,11 @@
 describe('funding circle', () => {
     it('should withdraw money', () => {
+
+        // if((new Date()).getDay() !== 5) {
+        //     cy.log('Not Friday, not withdrawing')
+        //     return;
+        // }
+
         const conf = Cypress.env('funding-circle');
         cy.visit('https://www.fundingcircle.com/login')
         cy.get('#user_username').type(Cypress.env('email'))
@@ -25,9 +31,14 @@ describe('funding circle', () => {
         cy.get('.page-header__balance').invoke('text').then((text) => {
             const balance = text.replace(/[^0-9.-]+/g,"");
             cy.log(balance);
-            cy.get('.account-card__buttons a:first-child').click()
-            cy.get('#withdrawal_amount').type(balance)
-            cy.get('button[type="submit"]').click()
+
+            if (parseInt(balance) <= 0) {
+                cy.log('No money to withdraw')
+            } else {
+                cy.get('.account-card__buttons a:first-child').click()
+                cy.get('#withdrawal_amount').type(balance)
+                cy.get('button[type="submit"]').click()
+            }
         })
     })
 })
